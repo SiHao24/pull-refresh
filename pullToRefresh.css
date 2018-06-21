@@ -1,0 +1,74 @@
+.pullToRefresh{
+    position: absolute;
+    left: 0;
+    right: 0;
+    margin: auto;
+    width: 50px;
+    height: 50px;
+    z-index: 10;
+    opacity: 1;
+    transform: translateY(-55px) translateZ(0) rotateZ(0deg);
+    -ms-transform: translateY(-55px) translateZ(0) rotateZ(0deg); /* IE9*/
+    -moz-transform: translateY(-55px) translateZ(0) rotateZ(0deg); /*Firefox*/
+    -webkit-transform: translateY(-55px) translateZ(0) rotateZ(0deg); /*Sasari and Chrome*/
+    -o-transform: translateY(-55px) translateZ(0) rotateZ(0deg); /*Opera*/
+}
+.backTranTop {
+    transition: transform 0.8s ease, opacity 0.8s ease;
+    -moz-transition: transform 0.8s ease, opacity 0.8s ease; /*Firefox 4*/
+    -webkit-transition: transform 0.8s ease, opacity 0.8s ease; /*Safari and Chrome*/
+    -o-transition: transform 0.8s ease, opacity 0.8s ease; /*Opera*/
+}
+.pullContainer {
+    position: relative;
+}
+.pullToRefresh img{
+    display: block;
+    width: 40px;
+    height: 40px;
+    position: absolute;
+    left: 0;
+    right: 0;
+    top: 0;
+    right: 0;
+    margin: auto;
+}
+/* loading旋转动画 */
+.loadingAnimation {
+    animation: loadingFrame 1s infinite;
+    -moz-animation: loadingFrame 1s infinite; /*Firefox*/
+    -webkit-animation: loadingFrame 1s infinite; /*Safari and Chrome*/
+    -o-animation: oadingFrame 1s infinite; /*Opera*/
+}
+@keyframes loadginFrame {
+    from {
+        transform: rotateZ(360deg);
+    }
+    to {
+        transform: rotateZ(0deg);
+    }
+}
+@-moz-keyframes loadginFrame { /*Firefox*/
+    from {
+        transform: rotateZ(360deg);
+    }
+    to {
+        transform: rotateZ(0deg);
+    }
+}
+@-webkit-keyframes loadginFrame { /*Safari and Chrome*/
+    from {
+        transform: rotateZ(360deg);
+    }
+    to {
+        transform: rotateZ(0deg);
+    }
+}
+@-o-keyframes loadginFrame { /* Opera */
+    from {
+        transform: rotateZ(360deg);
+    }
+    to {
+        transform: rotateZ(0deg);
+    }
+}

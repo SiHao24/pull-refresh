@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>下拉刷新，上拉加载</title>
+    <script src="https://code.jquery.com/jquery-2.2.4.min.js"></script>
+    <script src="iscroll.js"></script>
+    <script src="pullToRefresh.js?"></script>
+    <link rel='stylesheet' type='text/css' href = 'pullToRefresh.css'>
+    <style>
+        *{
+            padding: 0;
+            margin: 0;
+        }
+        html, body {
+            height: 100%;
+        }
+        #container {
+            height: 80px;
+            border-bottom: 1px solid black;
+            overflow: hidden;
+            background-color: #f1f1f1;
+        }
+        .item {
+            height: 80px;
+            border-bottom: 1px solid black;
+            text-align: center;
+            line-height: 80px;
+        }
+    </style>
+</head>
+<body>
+    <div id="container">
+        <div id="content"></div>
+    </div>
+
+    <script>
+        $(document).ready(function() {
+            // 测试用的数据下标
+            var i = 0;
+
+            // 安装下拉刷新插件
+            var pullToRefresh = $.installPullToRefresh('#container', {
+                onRefresh: function(refreshDone) {
+                    setTimeout(() => {
+                        $('#content').html("");
+                        // 刷新后出现10哥
+                        for( i = 0; i < 10; ++i) {
+                            $('#content').append('<p class="item">第'+ i + '个元素 </p>')
+                        }
+                    }, 2000);
+                },
+                onLoad: function (loadData) {
+                    setTimeout(() => {
+                        for (var j = 0; j < 5; ++j) {
+                            $('#content').append('<p>第' + j + '个元素</p>')
+                        }
+                        loadDone();
+                    }, 0);
+                }
+            })
+
+            // 触发首屏渲染
+            pullToRefresh.triggerPull();
+        })
+    </script>
+</body>
+</html>
